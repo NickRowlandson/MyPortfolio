@@ -17,7 +17,7 @@
 		$scope.regUser = {};
 		
 		$scope.login = function(){
-			$http.post('http://127.0.0.1:8080/login', $scope.loginUser)
+			$http.post('http://nickrowlandson.me:8080/login', $scope.loginUser)
 				.then(function(data){
 					if(data.status == 200){
 						console.log("LOGGED IN");
@@ -31,7 +31,7 @@
 		};
 		
 		$scope.register = function(){
-			$http.post('http://127.0.0.1:8080/register', $scope.regUser)
+			$http.post('http://nickrowlandson.me:8080/register', $scope.regUser)
 				.then(function(data){
 					if(data.status == 200){
 						console.log("REGISTERED");
