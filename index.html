@@ -26,17 +26,16 @@ Student ID: 200167125
     <script src="components/login_registration/login_registration.controller.js"></script>
 
 </head>
-
-<body class="bg">
-    <div>
-        <div class="mainNav">
-            <navbar></navbar>
-        </div>
+<div class="mainNav">
+    <navbar></navbar>
+</div>
+<body class="container bg">
+    <div> 
         <div class="col-md-4" style="margin-top:40px;">
-            <img src="assets/img/nickRowlandson.jpg" class="personalPic"/>
-            <div class="customWellPic">
+            <img src="assets/img/nickRowlandson.jpg" class="personalPic" alt="Profile Picture"/>
+            <div class="customWell1">
               <h1><strong>Nicholas Rowlandson</strong></h1>
-              <h3>Computer Programmer</h3>
+              <p><strong>Computer Programmer</strong></p>
             </div>
         </div>
         <div class="col-md-8" >
@@ -44,8 +43,10 @@ Student ID: 200167125
                 <div ng-view></div>
             </div>
         </div>    
-        <footer></footer>
+        
     </div>
 </body>
-
+<div>
+    <footer></footer>
+</div>
 </html>

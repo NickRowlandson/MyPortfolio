@@ -35,10 +35,11 @@ a {
     background-size: cover;
 }
 
-.footer {
-    color: #f2ebd7;
-    bottom:25px;
-    position:absolute;
+.footer > ul {
+    width:100%;
+    position:fixed;
+    bottom:0;
+    z-index: -11;
 }
 
 .content {
@@ -48,8 +49,8 @@ a {
 .panelEdit {
     background-color: #8f8064 !important;
     padding: 20px;
+    margin-bottom: 40px;
     margin-top: 80px;
-    text-align: left;
     border-color: #8f8064 !important;
 }
 
@@ -58,17 +59,17 @@ a {
 }
 
 .personalPic {
-    width:280px;
+    width:240px;
     border-radius: 5px;
 }
 
-.customWellPic {
+.customWell1 {
     background-color: #c3ba8f;
     padding: 5px;
     margin-top: 10px;
     border-radius: 5px;
     color: #333333;
-    width: 280px;
+    width: 240px;
 }
 
 .customWell {
@@ -76,8 +77,16 @@ a {
     padding:20px;
     border-radius: 5px;
     color: #333333;
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .imgBorder {
     border-radius: 40px;
     padding: 20px;
+}
+
+.heading {
+    color: #333333;
+    margin-left: 20px;
 }
