@@ -1,0 +1,83 @@
+/*
+Project Name: Assignment 1 (Personal Portfolio)
+By: Nick Rowlandson
+Student ID: 200167125
+
+CSS w/ Twitter Bootstrap
+*/
+
+@import url("../../bower_components/bootstrap/dist/css/bootstrap.css");
+    
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #f2ebd7;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.mainNav {
+    padding-bottom: 40px;
+}
+
+.navEdit {
+    background-color: #c3ba8f !important;
+    border-color: #c3ba8f !important;   
+}
+
+.bg { 
+    background: url(../img/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.footer {
+    color: #f2ebd7;
+    bottom:25px;
+    position:absolute;
+}
+
+.content {
+    color: #f2ebd7;
+}
+
+.panelEdit {
+    background-color: #8f8064 !important;
+    padding: 20px;
+    margin-top: 80px;
+    text-align: left;
+    border-color: #8f8064 !important;
+}
+
+.linkedIn {
+    width: 40px;   
+}
+
+.personalPic {
+    width:280px;
+    border-radius: 5px;
+}
+
+.customWellPic {
+    background-color: #c3ba8f;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    color: #333333;
+    width: 280px;
+}
+
+.customWell {
+    background-color: #c3ba8f;
+    padding:20px;
+    border-radius: 5px;
+    color: #333333;
+}
+.imgBorder {
+    border-radius: 40px;
+    padding: 20px;
+}
