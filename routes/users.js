@@ -12,38 +12,44 @@
             next();
         }
         
-        /* Get all the users */
-        app.get('/user', requireAuth, function (req, res, next) {
+        /* Get all the users NOTE: add auth later*/ 
+        app.get('/users', function (req, res, next) {
             User.find(function (err, users) {
                 var parsedUsers = users;
                 // Strip out the personal information from the user 
                     // Remove the password property from the user object
-            res.json(parsedUsers, 200);
+                res.json(parsedUsers, 200);
             });
         });
         
         /* process the submission of a new user */
         app.post('/register', function (req, res, next) {
-            console.log(req)
-            var user = new User(req.body);
-            var hashedPassword = user.generateHash(user.password);
-            User.create({
-                username: req.body.username,
-                email: req.body.email,
-                password: hashedPassword,
-                provider: 'local',
-                created: Date.now(),
-                updated: Date.now()
-            }, function (err, returnedUser) {
-                if (err) {
-                    console.log(err);
-                    res.sendStatus(err, 500);
+
+            User.findOne({username: req.body.username}, function(err, the_user){
+                if(the_user){
+                    res.sendStatus(422);
+                }else{
+                    var user = new User(req.body);
+                    var hashedPassword = user.generateHash(user.password);
+                    User.create({
+                        username: req.body.username,
+                        email: req.body.email,
+                        password: hashedPassword,
+                        provider: 'local',
+                        created: Date.now(),
+                        updated: Date.now()
+                    }, function (err, returnedUser) {
+                        if (err) {
+                            console.log(err);
+                            res.sendStatus(err, 500);
+                        }
+                        else {
+                            console.log(returnedUser);
+                            res.sendStatus(200);
+                        }
+                    });        
                 }
-                else {
-                    console.log(returnedUser);
-                    res.sendStatus(200);
-                }
-            });
+            })
         });
         
         /* process the edit form submission */
@@ -67,7 +73,7 @@
         });
         
         /* run delete on the selected user */
-        app.delete('/user/:id', requireAuth, function (req, res, next) {
+        app.delete('/delete/:id', requireAuth, function (req, res, next) {
             var id = req.params.id;
             User.remove({ _id: id }, function (err) {
                 if (err) {

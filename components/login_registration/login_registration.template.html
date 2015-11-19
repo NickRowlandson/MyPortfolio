@@ -1,4 +1,5 @@
 <div ng-if="error" class="alert alert-danger">{{error}}</div>
+<div ng-if="msg" class="alert alert-success">{{msg}}</div>
 <div class="form-group" ng-if="state == 'login'">
 	<input ng-model="loginUser.username" type="text" class="form-control" placeholder="Username"/>
 	<input ng-model="loginUser.password" type="password" class="form-control" placeholder="Password"/>
@@ -9,4 +10,25 @@
 	<input ng-model="regUser.password" type="password" class="form-control" placeholder="Password"/>
 	<input ng-model="regUser.email" type="text" class="form-control" placeholder="Email"/>
 	<a class="btn btn-primary" href ng-click="register()">Register</a>
+</div>
+
+<div class="form-group"  ng-if="state == 'loggedIn'">
+	<div ng-init="getUsers()">
+		<h2>User List</h2>
+		<div ng-repeat="user in userList">
+			<table class="table table-bordered table-striped table-hover">
+				<tr>
+					<td style="color:black;">
+						{{user._id}} 
+					</td>
+					<td style="color:black;">
+						{{user.username}} 
+					</td>
+					<td style="color:black;">
+						{{user.email}}
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>
