@@ -1,8 +1,24 @@
+<!--
+Project Name: Personal Portfolio
+By: Nick Rowlandson
+Student ID: 200167125
+-->
+
 <!-- if error display message-->
-<div ng-if="error" class="alert alert-danger">{{error}}</div>
+<div ng-if="error" class="alert alert-danger alert-dismissable">
+	<button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+      &times;
+   </button>
+   <strong>{{error}}</strong>
+</div>
 
 <!-- if success display message-->
-<div ng-if="msg" class="alert alert-success">{{msg}}</div>
+<div ng-if="msg" class="alert alert-success alert-dismissable">
+	<button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+      &times;
+   </button>
+   <strong>{{msg}}</strong>
+</div>
 
 <!-- if the user selects the login button, show the login page -->
 <div class="form-group" ng-if="state == 'login'" style="width:250px;">
@@ -15,6 +31,8 @@
 <!-- if the user selects register, show the register button -->
 <div class="form-group"  ng-if="state == 'registration'" style="width:250px;">
 	<h3 class="heading"><strong>Register</strong></h3><br \>
+	<input ng-model="regUser.firstname" type="text" class="form-control" placeholder="First Name"/>
+	<input ng-model="regUser.lastname" type="text" class="form-control" placeholder="Last Name"/>
 	<input ng-model="regUser.username" type="text" class="form-control" placeholder="Username"/>
 	<input ng-model="regUser.password" type="password" class="form-control" placeholder="Password"/>
 	<input ng-model="regUser.email" type="text" class="form-control" placeholder="Email"/>
@@ -22,19 +40,33 @@
 </div>
 
 <!-- display users in db -->
-<div class="form-group"  ng-if="state == 'loggedIn'">
+<div ng-if="state == 'loggedIn'">
 	<div ng-init="getUsers()">
 		<h3 class="heading"><strong>User List</strong></h3><br \>
-		<div ng-repeat="user in userList">
-			<table class="table table-bordered table-striped table-hover">
-				<tr>
-					<td style="color:black;">
-						{{user.username}} 
-					</td>
-					<td style="color:black;">
-						{{user.email}}
-					</td>
-				</tr>
+		<div class="row customWell2 table-responsive" >
+			<table class="table table-striped">
+			<thead>
+			<tr>
+				<th class="col-xs-1"></th> 
+				<th class="col-xs-2">Last</th> 
+				<th class="col-xs-2">First</th>
+				<th class="col-xs-2">Username</th>
+				<th class="col-xs-2">Email</th>
+				<th class="col-xs-1">Edit</th> 
+				<th class="col-xs-1">Delete</th> 
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="user in userList" ng-class-odd="'alt'" style="color:black;">
+				<td class="col-xs-1"></td> 
+				<td class="col-xs-2 cap">{{user.lastname}}</td> 
+				<td class="col-xs-2 cap">{{user.firstname}}</td>
+				<td class="col-xs-2 strong">{{user.username}}</td>
+				<td class="col-xs-2">{{user.email}}</td> 
+				<td class="col-xs-1"><a href ng-click="put(user._id)" class="btn-sm btn-info"><i class="glyphicon glyphicon-pencil"></i></a>
+				<td class="col-xs-1"><a href ng-click="delete(user._id)" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
+			</tr>
+			</tbody>
 			</table>
 		</div>
 	</div>

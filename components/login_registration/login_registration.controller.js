@@ -18,7 +18,7 @@
 		
 		$scope.getUsers = function(){
 			console.log("get users")
-			$http.get('http://nickrowlandson.me:8080/users')
+			$http.get('http://127.0.0.1:8080/users')
 				.then(function(data){
 					console.log(data.data);
 					$scope.userList = data.data;
@@ -28,7 +28,7 @@
 		}
 		
 		$scope.login = function(){
-			$http.post('http://nickrowlandson.me:8080/login', $scope.loginUser)
+			$http.post('http://127.0.0.1:8080/login', $scope.loginUser)
 				.then(function(data){
 					if(data.status == 200){
 						console.log("LOGGED IN");
@@ -45,7 +45,7 @@
 		};
 		
 		$scope.register = function(){
-			$http.post('http://nickrowlandson.me:8080/register', $scope.regUser)
+			$http.post('http://127.0.0.1:8080/register', $scope.regUser)
 				.then(function(data){
 					if(data.status == 200){
 						console.log("REGISTERED");
@@ -56,11 +56,27 @@
 					}
 				}, function(data){
 					if(data.status == 422){
-						$scope.error == "USER ALREADY EXISTS. PLEASE ENTER A DIFFERENT USER NAME.";
+						$scope.error = "USER ALREADY EXISTS. PLEASE ENTER A DIFFERENT USER NAME.";
 					}
 					console.log("REGISTRATION ERROR",data);
 				})
 			};
+	
+		$scope.delete = function(userID){
+			$http.delete('http://127.0.0.1:8080/user/'+userID)
+				.then(function(data){
+					if(data.status == 200){
+						console.log("DELETED");
+						$scope.msg = "DELETED";
+					}else{
+						console.log("DELETE USER FAILED", data)
+					}
+				}, function(data){
+					console.log("DELETE ERROR",data);
+				});
+		};
+		
     };
+
 
 }());

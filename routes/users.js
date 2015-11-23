@@ -32,6 +32,8 @@
                     var user = new User(req.body);
                     var hashedPassword = user.generateHash(user.password);
                     User.create({
+                        firstname: req.body.firstname,
+                        lastname: req.body.lastname,
                         username: req.body.username,
                         email: req.body.email,
                         password: hashedPassword,
@@ -53,7 +55,7 @@
         });
         
         /* process the edit form submission */
-        app.post('/user/:id', requireAuth, function (req, res, next) {
+        app.put('/user/:id', function (req, res) {
             var id = req.params.id;
             var user = new User(req.body);
             user.password = user.generateHash(user.password);
@@ -73,7 +75,7 @@
         });
         
         /* run delete on the selected user */
-        app.delete('/delete/:id', requireAuth, function (req, res, next) {
+        app.delete('/user/:id', function (req, res) {
             var id = req.params.id;
             User.remove({ _id: id }, function (err) {
                 if (err) {
