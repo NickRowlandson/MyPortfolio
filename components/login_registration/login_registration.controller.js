@@ -18,7 +18,7 @@
 		
 		$scope.getUsers = function(){
 			console.log("get users")
-			$http.get('http://127.0.0.1:8080/users')
+			$http.get('http://nickrowlandson.me/users')
 				.then(function(data){
 					console.log(data.data);
 					$scope.userList = data.data;
@@ -28,7 +28,7 @@
 		}
 		
 		$scope.login = function(){
-			$http.post('http://127.0.0.1:8080/login', $scope.loginUser)
+			$http.post('http://nickrowlandson.me/login', $scope.loginUser)
 				.then(function(data){
 					if(data.status == 200){
 						console.log("LOGGED IN");
@@ -45,7 +45,7 @@
 		};
 		
 		$scope.register = function(){
-			$http.post('http://127.0.0.1:8080/register', $scope.regUser)
+			$http.post('http://nickrowlandson.me/register', $scope.regUser)
 				.then(function(data){
 					if(data.status == 200){
 						console.log("REGISTERED");
@@ -63,7 +63,7 @@
 			};
 	
 		$scope.delete = function(userID){
-			$http.delete('http://127.0.0.1:8080/user/'+userID)
+			$http.delete('http://nickrowlandson.me/user/'+userID)
 				.then(function(data){
 					if(data.status == 200){
 						console.log("DELETED");
